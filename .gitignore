@@ -1,0 +1,33 @@
+# binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.out
+*.test
+
+# go workspace files
+go.work
+go.work.sum
+
+# environment variables
+.env
+
+# logs
+*.log
+
+# vscode
+.vscode/
+!.vscode/extensions.json
+
+# os files
+.DS_Store
+Thumbs.db
+
+# build output
+/bin/
+/dist/
+
+# temporary files
+/tmp/
