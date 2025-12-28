@@ -2,13 +2,13 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"golang_restaurant_management/controllers"
+	controller "golang_restaurant_management/controllers"
 )
 
 func TableRoutes(incomingRoutes *gin.Engine) {
-	incomingRoutes.GET("/tables", controllers.GetTables())
-	incomingRoutes.GET("/tables/:table_id", controllers.GetTable())
-	incomingRoutes.POST("/tables", controllers.CreateTable())
-	incomingRoutes.PATCH("tables/:table_id", controllers.UpdateTable())
+	incomingRoutes.GET("/tables", controller.GetTables())
+	incomingRoutes.GET("/tables/:table_id", controller.GetTable())
+	incomingRoutes.POST("/tables", controller.CreateTable())
+	incomingRoutes.PATCH("tables/:table_id", controller.UpdateTable())
 
 }
