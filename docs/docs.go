@@ -54,6 +54,50 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "post": {
+                "description": "Creates a new user in the system. Auto-generates ID, UUID, and timestamps.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a new user",
+                "parameters": [
+                    {
+                        "description": "User data",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ErrorResponse"
+                        }
+                    }
+                }
             }
         }
     },
@@ -70,7 +114,9 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "created_at": {
-                    "type": "string"
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "2026-01-13T12:00:00Z"
                 },
                 "email": {
                     "type": "string"
@@ -79,16 +125,22 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "auto-generated"
                 },
                 "last_name": {
                     "type": "string"
                 },
                 "updated_at": {
-                    "type": "string"
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "2026-01-13T12:00:00Z"
                 },
                 "uuid": {
-                    "type": "string"
+                    "type": "string",
+                    "readOnly": true,
+                    "example": "auto-generated"
                 }
             }
         }

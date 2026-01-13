@@ -8,18 +8,26 @@ definitions:
   models.User:
     properties:
       created_at:
+        example: "2026-01-13T12:00:00Z"
+        readOnly: true
         type: string
       email:
         type: string
       first_name:
         type: string
       id:
+        example: auto-generated
+        readOnly: true
         type: string
       last_name:
         type: string
       updated_at:
+        example: "2026-01-13T12:00:00Z"
+        readOnly: true
         type: string
       uuid:
+        example: auto-generated
+        readOnly: true
         type: string
     type: object
 host: localhost:8000
@@ -55,6 +63,36 @@ paths:
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
       summary: Get all users
+      tags:
+      - Users
+    post:
+      consumes:
+      - application/json
+      description: Creates a new user in the system. Auto-generates ID, UUID, and
+        timestamps.
+      parameters:
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controllers.ErrorResponse'
+      summary: Create a new user
       tags:
       - Users
 swagger: "2.0"
